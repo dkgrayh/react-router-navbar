@@ -1,6 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 import './NavBar.css';
+import { useState } from 'react';
 export default function NavBar() {
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <nav>
       <Link
@@ -9,7 +11,17 @@ export default function NavBar() {
       >
         Website
       </Link>
-      <ul>
+      <div
+        className="menu"
+        onClick={() => {
+          setOpenMenu(!openMenu);
+        }}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul className={openMenu ? 'open' : ''}>
         <li>
           <NavLink to="/about">About</NavLink>
         </li>
